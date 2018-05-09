@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{header}}!!
+    </h1>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label class="control-label" for="Cars">Cars:</label>
+      <select *ngIf="allCars" [(ngModel)]="selectedCar" (change)="onSelectCar($event.target.value)" class="form-control"
+        id="cars">
+        <option value="0">Select Car Brand</option>
+        <option *ngFor="let car of allCars" value={{car._id}}>{{car.carName}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+      <div *ngIf="selectedCar">
+        <label class="control-label" for="Models">Models:</label>
+        <select *ngIf="model" [(ngModel)]="selectedModel" (change)="onSelectModel($event.target.value)" class="form-control"
+          id="model">
+          <option value="0">Select Model</option>
+          <option *ngFor="let m of model" value={{m._id}}>{{m.carModelName}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+  <div *ngIf="selectedModel" class="text-center">
+    <h3 >{{modelName[0].carModelName}}</h3>
+    <img src="../assets/images/{{modelName[0].imagePath}}.jpg" class="img-thumbnail">
+  </div>
+</div>
